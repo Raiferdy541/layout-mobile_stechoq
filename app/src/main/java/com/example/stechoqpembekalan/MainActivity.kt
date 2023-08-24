@@ -11,17 +11,28 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.stechoqpembekalan.ui.theme.StechoqPembekalanTheme
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.widget.Button
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            StechoqPembekalanTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting("Android")
-                }
-            }
+        setContentView(R.layout.main_activity)
+
+        val loginButton: Button = findViewById(R.id.loginButton)
+        val registerButton: Button = findViewById(R.id.registerButton)
+
+        loginButton.setOnClickListener {
+            // Redirect to LoginActivity
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        registerButton.setOnClickListener {
+            // Redirect to RegisterActivity
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 }
